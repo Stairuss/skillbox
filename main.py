@@ -10,10 +10,7 @@ from database import engine, get_db
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(
-    title="Кулинарная книга API",
-    description="API для работы с рецептами"
-)
+app = FastAPI(title="Кулинарная книга API", description="API для работы с рецептами")
 
 
 @app.get("/recipes", response_model=List[schemas.RecipeList])

@@ -6,15 +6,10 @@ from typing import Generator
 SQLALCHEMY_DATABASE_URL: str = "sqlite:///./recipes.db"
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 )
 
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Создание всех таблиц описанных в Base (модели)
 Base.metadata.create_all(bind=engine)
