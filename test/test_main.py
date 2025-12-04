@@ -1,10 +1,10 @@
-from fastapi.testclient import TestClient
-from main import app
-from sqlalchemy.orm import Session
-from database import SessionLocal, engine
-from models import Base
 import pytest
+from fastapi.testclient import TestClient
+from sqlalchemy.orm import Session
 
+from database import SessionLocal, engine
+from main import app
+from models import Base
 
 client = TestClient(app)
 

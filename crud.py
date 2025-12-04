@@ -1,6 +1,8 @@
-from sqlalchemy.orm import Session
-from models import Recipe
 from typing import List, Optional
+
+from sqlalchemy.orm import Session
+
+from models import Recipe
 
 
 def get_all_recipes(db: Session) -> List[Recipe]:
