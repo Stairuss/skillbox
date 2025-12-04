@@ -15,11 +15,16 @@ app = FastAPI(title="Кулинарная книга API", description="API дл
 
 @app.get("/recipes", response_model=List[schemas.RecipeList])
 def read_recipes(db: Session = Depends(get_db)) -> List[schemas.RecipeList]:
-    """
-    Возвращает список всех рецептов,
-    отсортированный по популярности и времени.
-    """
-    return crud.get_all_recipes(db)
+    """Возвращает список всех рецептов, отсортированный по популярности и времени."""
+    recipes = crud.get_all_recipes(db)
+    return [
+        schemas.RecipeList(
+            name=recipe.name,
+            views_count=recipe.views_count,
+            cooking_time_minutes=recipe.cooking_time_minutes,
+        )
+        for recipe in recipes
+    ]
 
 
 @app.get("/recipes/{recipe_id}", response_model=schemas.RecipeDetail)
