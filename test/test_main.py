@@ -1,6 +1,5 @@
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy.orm import Session
 
 from database import SessionLocal, engine
 from main import app
