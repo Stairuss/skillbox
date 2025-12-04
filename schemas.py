@@ -11,7 +11,7 @@ class RecipeList(BaseModel):
     cooking_time_minutes: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # ← SQLAlchemy 2.0+ (замена orm_mode)
 
 
 class RecipeDetail(BaseModel):
@@ -23,7 +23,7 @@ class RecipeDetail(BaseModel):
     description: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # ← SQLAlchemy 2.0+
 
 
 class RecipeCreate(BaseModel):
